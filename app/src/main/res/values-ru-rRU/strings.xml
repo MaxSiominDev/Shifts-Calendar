@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">График рабочих смен</string>
+    <string name="customize_schedule">Настройте свой график</string>
+    <string name="shifts">Рабочие дни</string>
+    <string name="days_off">Выходные</string>
+    <string name="count_from_date">Дата начала отсчёта</string>
+    <string name="first_shift">Первый рабочий день</string>
+    <string name="shift">Смена</string>
+    <string name="day_count">Кол-во дней</string>
+    <string name="apply">Применить</string>
+    <string name="select_first_day">Выберите первый рабочий день</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Назад</string>
+    <string name="ok">Ок</string>
+    <string name="data_will_be_erased">Сохранение новой конфигурации приведёт к потере всех данных календаря!</string>
+    <string name="schedule_name">Название графика</string>
+    <string name="create_new_schedule">Создать новый график</string>
+    <string name="schedule_name_empty">Введите имя графика</string>
+    <string name="go_to">Перейти к</string>
+    <string name="all_schedules">Все графики</string>
+
+    <!-- Shift types -->
+    <string name="day_off">Выходной</string>
+    <string name="day">День</string>
+    <string name="work_day">Сутки</string>
+    <string name="night">Ночь</string>
+    <string name="empty">Пусто</string>
+
+    <!-- Calendar View translations -->
+    <string name="material_calendar_monday">ПН</string>
+    <string name="material_calendar_tuesday">ВТ</string>
+    <string name="material_calendar_wednesday">СР</string>
+    <string name="material_calendar_thursday">ЧТ</string>
+    <string name="material_calendar_friday">ПТ</string>
+    <string name="material_calendar_saturday">СБ</string>
+    <string name="material_calendar_sunday">ВС</string>
+    <string name="material_calendar_today_button">Текущий месяц</string>
+    <string name="material_calendar_positive_button">Ок</string>
+    <string name="material_calendar_negative_button">Отмена</string>
+
+    <!-- Months -->
+    <string name="january">Январь</string>
+    <string name="february">Февраль</string>
+    <string name="march">Март</string>
+    <string name="april">Апрель</string>
+    <string name="may">Май</string>
+    <string name="june">Июнь</string>
+    <string name="july">Июль</string>
+    <string name="august">Август</string>
+    <string name="september">Сентябрь</string>
+    <string name="october">Октябрь</string>
+    <string name="november">Ноябрь</string>
+    <string name="december">Декабрь</string>
+
+    <!-- Named shift types -->
+    <string name="morning_dayoff">Сутки через сутки</string>
+    <string name="morning2x_dayoff2x">Два через два</string>
+    <string name="morning3x_dayoff3x">Три через три</string>
+    <string name="morning4x_dayoff4x">Четыре через четыре</string>
+    <string name="morning_dayoff2x">Сутки через двое</string>
+    <string name="morning_dayoff3x">Сутки через трое</string>
+    <string name="morning2x_dayoff4x">Два через четыре</string>
+    <string name="morning5x_dayoff2x">Пять через два</string>
+    <string name="morning4x_dayoff2x">Четыре через два</string>
+    <string name="morning3x_dayoff2x">Три через два</string>
+    <string name="morning2x_dayoff">Два через один</string>
+    <string name="morning3x_dayoff">Три через один</string>
+    <string name="morning_night_dayoff2x">День, ночь, два выходных</string>
+    <string name="morning2x_night2x_dayoff_2x">Два в день, два в ночь, два выходных</string>
+    <string name="morning2x_night2x_dayoff_4x">Два в день, два в ночь, четыре выходных</string>
+    <string name="adjust_manually">Настроить вручную</string>
+    <string name="morning_night_dayoff">День, ночь, выходной</string>
+
+</resources>

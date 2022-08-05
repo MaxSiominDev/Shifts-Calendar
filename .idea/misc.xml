@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/day.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/day_off.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/ic_add.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/ic_plus.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/morning.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/night.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/drawable/save_button_background.xml" value="0.327" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout-land/fragment_customize.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout-land/fragment_shifts.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/activity_customize.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/activity_shifts.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/calendar_day_layout.xml" value="0.3614583333333333" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/dialog_calendar.xml" value="0.3614583333333333" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/dialog_new_schedule.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/dialog_select_shift_type.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/dialog_selected_day.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/dialog_selected_day_to_go_to.xml" value="0.3614583333333333" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/fragment_customize.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/fragment_customize_binding.xml" value="0.3614583333333333" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/fragment_shifts.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/item_config.xml" value="0.3614583333333333" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/item_schedule.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/freelance/work_shifts_schedule/app/src/main/res/layout/item_shift_type.xml" value="0.2965811965811966" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/dialog_new_schedule.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/dialog_select_shift_type.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/dialog_selected_day.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/fragment_shifts.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/item_config.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/item_schedule.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/drawable/day.xml" value="0.2765" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/drawable/day_off.xml" value="0.2765" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/drawable/morning.xml" value="0.2765" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/drawable/night.xml" value="0.2765" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2765" />
+        <entry key="..\:/Users/Dacha/Desktop/work_shifts_schedule/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2765" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/dialog_new_schedule.xml" value="0.18" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/fragment_home.xml" value="0.15534420289855072" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/work_shifts_schedule/app/src/main/res/layout/item_schedule.xml" value="0.19635416666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

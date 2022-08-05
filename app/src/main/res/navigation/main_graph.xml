@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph.xml"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/shiftsFragment"
+        android:name="com.nik.shift.calendar.ui.shifts.ShiftsFragment"
+        android:label="ShiftsFragment" >
+        <action
+            android:id="@+id/action_shiftsFragment_to_customizeFragment"
+            app:destination="@id/customizeFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="scheduleOpenedFirstTime"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/customizeFragment"
+        android:name="com.nik.shift.calendar.ui.customize.CustomizeFragment"
+        android:label="CustomizeFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="isNewSchedule"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nik.shift.calendar.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_shiftsFragment"
+            app:destination="@id/shiftsFragment" />
+    </fragment>
+</navigation>

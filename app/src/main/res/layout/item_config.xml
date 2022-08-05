@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/shift_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/shift_types"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#888888"
+        app:layout_constraintTop_toBottomOf="@id/shift_type"
+        app:layout_constraintStart_toStartOf="@+id/shift_type"
+        app:layout_constraintEnd_toEndOf="@id/shift_type"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/day_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_between_shift_text_and_day_count_text"
+        android:entries="@array/day_counts"
+        app:layout_constraintBottom_toBottomOf="@+id/shift_type"
+        app:layout_constraintStart_toStartOf="@+id/shift_type" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#888888"
+        app:layout_constraintEnd_toEndOf="@id/day_count"
+        app:layout_constraintStart_toStartOf="@+id/day_count"
+        app:layout_constraintTop_toBottomOf="@id/day_count" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="24dp"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:layout_height="24dp"
+        android:background="@drawable/background_transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_remove"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

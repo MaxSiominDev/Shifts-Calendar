@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Work shifts schedule</string>
+    <string name="customize_schedule">Customize your schedule</string>
+    <string name="shifts">Shifts</string>
+    <string name="days_off">Days off</string>
+    <string name="count_from_date">Count from</string>
+    <string name="first_shift">First shift</string>
+    <string name="shift">Shift</string>
+    <string name="day_count">Day count</string>
+    <string name="apply">Apply</string>
+    <string name="select_first_day">Select first working day</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="data_will_be_erased">All calendar data will be erased</string>
+    <string name="schedule_name">Schedule name</string>
+    <string name="create_new_schedule">Create new schedule</string>
+    <string name="schedule_name_empty">This field cannot be blank</string>
+    <string name="adjust_manually">Adjust manually</string>
+    <string name="go_to">Go to</string>
+    <string name="all_schedules">All schedules</string>
+
+    <!-- Shift types -->
+    <string name="day_off">Day off</string>
+    <string name="day">Day</string>
+    <string name="work_day">Work day</string>
+    <string name="night">NIght</string>
+    <string name="empty">Empty</string>
+
+    <!-- Calendar View translations -->
+    <string name="material_calendar_monday">M</string>
+    <string name="material_calendar_tuesday">T</string>
+    <string name="material_calendar_wednesday">W</string>
+    <string name="material_calendar_thursday">T</string>
+    <string name="material_calendar_friday">F</string>
+    <string name="material_calendar_saturday">S</string>
+    <string name="material_calendar_sunday">S</string>
+    <string name="material_calendar_today_button">This month</string>
+    <string name="material_calendar_positive_button">OK</string>
+    <string name="material_calendar_negative_button">Cancel</string>
+
+    <!-- Months -->
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <!-- Named shift types -->
+    <string name="morning_dayoff">1 work day, 1 day off</string>
+    <string name="morning2x_dayoff2x">2 work days, 2 days off</string>
+    <string name="morning3x_dayoff3x">3 work days, 3 days off</string>
+    <string name="morning4x_dayoff4x">4 work days, 4 days off</string>
+    <string name="morning_dayoff2x">1 work day, 2 days off</string>
+    <string name="morning_dayoff3x">1 work day, 3 days off</string>
+    <string name="morning2x_dayoff4x">2 work days, 4 days off</string>
+    <string name="morning5x_dayoff2x">5 work days, 2 days off</string>
+    <string name="morning4x_dayoff2x">4 work days, 2 days off</string>
+    <string name="morning3x_dayoff2x">3 work days, 2 days off</string>
+    <string name="morning2x_dayoff">2 work days, 1 day off</string>
+    <string name="morning3x_dayoff">3 work days, 1 day off</string>
+    <string name="morning_night_dayoff">Day, night, day off</string>
+    <string name="morning_night_dayoff2x">Day, night, 2 days off</string>
+    <string name="morning2x_night2x_dayoff_2x">2 days, 2 nights, 2 days off</string>
+    <string name="morning2x_night2x_dayoff_4x">2 days, 2 nights, 4 days off</string>
+
+</resources>
