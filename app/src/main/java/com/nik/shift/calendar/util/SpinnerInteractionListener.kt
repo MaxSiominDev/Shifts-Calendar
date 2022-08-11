@@ -5,7 +5,7 @@ import android.widget.AdapterView
 import androidx.appcompat.widget.AppCompatSpinner
 import timber.log.Timber
 
-fun AppCompatSpinner.addOnItemSelectedListener(action: (Int) -> Unit) {
+/*fun AppCompatSpinner.addOnItemSelectedListener(action: (Int) -> Unit) {
     this.onItemSelectedListener = onItemSelectedListener {
         Timber.v("invoke called")
         action.invoke(it)
@@ -26,4 +26,4 @@ private fun onItemSelectedListener(action: (Int) -> Unit): AdapterView.OnItemSel
 
         }
     }
-}
+}*/

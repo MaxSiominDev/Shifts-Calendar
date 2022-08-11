@@ -201,7 +201,7 @@ class ShiftsFragment : ViewBindingFragment<FragmentShiftsBinding>() {
 
             val btnOk = dialog.findViewById<MaterialButton>(R.id.button_ok)
             btnOk.setOnClickListener {
-                val position = spinner.selectedItemId.toInt()
+                val position = spinner.selectedItemPosition
                 setFragmentResultOnActivity("SelectedDayDialog/onSuccess", bundleOf("spinnerPosition" to position))
                 dialog.dismiss()
             }

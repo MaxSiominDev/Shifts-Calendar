@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -17,6 +19,7 @@ import com.nik.shift.calendar.R
 import com.nik.shift.calendar.databinding.FragmentCustomizeBinding
 import com.nik.shift.calendar.databinding.ItemConfigBinding
 import com.nik.shift.calendar.model.ShiftsManager
+import com.nik.shift.calendar.model.ShiftsManager.Companion.defaultItem
 import com.nik.shift.calendar.ui.ViewBindingFragment
 import com.nik.shift.calendar.util.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,14 +33,8 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
     private inline val scheduleId get() = requireArguments().getInt(ARG_ID)
     private inline val isNewSchedule get() = requireArguments().getBoolean(ARG_IS_NEW_SCHEDULE)
 
-    private val recyclerViewData = mutableListOf<CustomizeAdapter.Item>()
     private val recyclerViewAdapter by lazy {
-        CustomizeAdapter(
-            recyclerViewData,
-            viewModel::onTypeChanged,
-            viewModel::onCountChanged,
-            viewModel::onDeleteItem,
-        )
+        CustomizeAdapter()
     }
 
     private val onBackPressedCallback: OnBackPressedCallback by lazy {
@@ -85,20 +82,15 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
             showCalendarDialog()
         }
 
-        binding.recyclerView.layoutManager = NonScrollingLinearLayoutManager(requireContext())
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = recyclerViewAdapter
 
         viewModel.recyclerViewContent.observe(viewLifecycleOwner) {
-            recyclerViewData.apply {
-                clear()
-                addAll(it.map { CustomizeAdapter.Item(it.dayState.toInt(), it.numberOfDays) })
-            }
-            Timber.i(recyclerViewData.toString())
-            recyclerViewAdapter.notifyDataSetChanged()
+            recyclerViewAdapter.values = it.map { CustomizeAdapter.Item(it.dayState.toInt(), it.numberOfDays) }
         }
 
         binding.addButton.setOnClickListener {
-            viewModel.addItemToRecyclerView()
+            recyclerViewAdapter.addItem(CustomizeAdapter.Item(defaultItem.dayState.toInt(), defaultItem.numberOfDays))
         }
 
         binding.saveButton.setOnClickListener {
@@ -109,10 +101,6 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
             } else {
                 onSave()
             }
-        }
-
-        viewModel.addButtonVisibility.observe(viewLifecycleOwner) {
-            binding.addButton.visibility = it
         }
 
         viewModel.firstDayText.observe(viewLifecycleOwner) {
@@ -156,7 +144,10 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
         // and calling findNavController.popBackStack()
         binding.saveButton.isClickable = false
 
-        val config = pConfig ?: viewModel.recyclerViewContent.value!!
+        val config = pConfig ?: recyclerViewAdapter.spinnerValues.map {
+            ShiftsManager.ShiftItem(DayState.fromInt(it.type), it.numberOfDays + 1)
+        }
+        Timber.i(config.joinToString())
         viewModel.saveNewConfiguration(scheduleId, config)
     }
 
@@ -186,12 +177,33 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
         private const val ARG_IS_NEW_SCHEDULE = "isNewSchedule"
     }
 
-    private class CustomizeAdapter(
-        private val values: List<Item>,
-        private val onTypeChanged: (Int, Int) -> Unit,
-        private val onCountChanged: (Int, Int) -> Unit,
-        private val onDeleteItem: (Int) -> Unit,
-    ) : RecyclerView.Adapter<CustomizeAdapter.ViewHolder>() {
+    @SuppressLint("NotifyDataSetChanged")
+    private class CustomizeAdapter : RecyclerView.Adapter<CustomizeAdapter.ViewHolder>() {
+
+        var values: List<Item>? = null
+            set(value) {
+                field = value
+                notifyDataSetChanged()
+            }
+
+        fun addItem(item: Item) {
+            val values = mutableListOf<Item>()
+            this.values!!.forEachIndexed { i, _ ->
+                values.add(Item(spinnerValues[i].type, spinnerValues[i].numberOfDays))
+            }
+            values.add(item)
+            this.values = values
+        }
+
+        private var _spinners = mutableListOf<_Spinners>()
+        val spinnerValues: List<Item> get() = _spinners.map {
+            Item(it.typeSpinner.selectedItemPosition, it.countSpinner.selectedItemPosition + 1)
+        }
+
+        private data class _Spinners(
+            val typeSpinner: AppCompatSpinner,
+            val countSpinner: AppCompatSpinner,
+        )
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             ViewHolder(
@@ -200,26 +212,38 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.apply {
-                shiftType.setSelection(values[position].type)
-                shiftType.addOnItemSelectedListener {
-                    onTypeChanged(position, it)
+                Timber.i("position = $position")
+                itemView.setOnClickListener {
+                    Timber.i("clicked position = $position")
                 }
 
-                dayCount.setSelection(values[position].numberOfDays - 1)
-                dayCount.addOnItemSelectedListener {
+                if (_spinners.size < position + 1)
+                    _spinners.add(_Spinners(shiftType, dayCount))
+                else
+                    _spinners[position] = _Spinners(shiftType, dayCount)
+
+                shiftType.setSelection(values!![position].type)
+                /*shiftType.addOnItemSelectedListener {
+                    onTypeChanged(position, it)
+                }*/
+
+                dayCount.setSelection(values!![position].numberOfDays - 1)
+                /*dayCount.addOnItemSelectedListener {
                     onCountChanged(position, it + 1) // 1st elem is 0
-                }
+                }*/
 
                 if (position >= 2) {
                     deleteButton.visibility = View.VISIBLE
                     deleteButton.setOnClickListener {
-                        onDeleteItem(position)
+                        values = values!!.toMutableList().apply { removeAt(position) }
                     }
+                } else {
+                    deleteButton.visibility = View.GONE
                 }
             }
         }
 
-        override fun getItemCount() = values.size
+        override fun getItemCount() = values?.size ?: 0
 
         private inner class ViewHolder(binding: ItemConfigBinding) : RecyclerView.ViewHolder(binding.root) {
 

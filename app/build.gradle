@@ -4,18 +4,18 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id "androidx.navigation.safeargs.kotlin"
     id 'kotlin-kapt'
-    //id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.nik.shift.calendar"
         minSdk 21
-        targetSdk 32
-        versionCode 7
-        versionName "1.1.4"
+        targetSdk 33
+        versionCode 10
+        versionName "1.1.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,6 +58,7 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.7'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
@@ -79,5 +80,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi:1.12.0"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.12.0"
 
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation "com.google.android.gms:play-services-auth:20.2.0"
 
 }

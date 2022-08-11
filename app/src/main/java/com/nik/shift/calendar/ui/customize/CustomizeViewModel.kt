@@ -1,6 +1,5 @@
 package com.nik.shift.calendar.ui.customize
 
-import android.view.View
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,9 +29,6 @@ class CustomizeViewModel @Inject constructor(private val shiftsManager: ShiftsMa
         MutableLiveData(listOf(ShiftsManager.ShiftItem(DayState.DAY, 2), defaultItem))
     val recyclerViewContent: LiveData<List<ShiftsManager.ShiftItem>> = _recyclerViewContent
 
-    private val _addButtonVisibility = MutableLiveData(View.VISIBLE)
-    val addButtonVisibility: LiveData<Int> = _addButtonVisibility
-
     private val _goBackChannel = Channel<GoBack>(Channel.BUFFERED)
     val goBackFlow = _goBackChannel.receiveAsFlow()
 
@@ -49,48 +45,6 @@ class CustomizeViewModel @Inject constructor(private val shiftsManager: ShiftsMa
     fun onFirstDayChanged(day: Calendar) {
         firstDay = day
         _firstDayText.value = getStringDateFromCalendar(day)
-    }
-
-    @MainThread // Invocation of LiveData.setValue() is available only on the UI thread
-    fun onTypeChanged(itemPosition: Int, newSpinnerPosition: Int) {
-        Timber.d("onTypeChanged called")
-        val content = _recyclerViewContent.value!!.toMutableList()
-        Timber.i("newPos: $newSpinnerPosition")
-        Timber.i("dayState: ${DayState.fromInt(newSpinnerPosition)}")
-        content[itemPosition] =
-            ShiftsManager.ShiftItem(DayState.fromInt(newSpinnerPosition), content[itemPosition].numberOfDays)
-        _recyclerViewContent.value = content
-    }
-
-    @MainThread // Invocation of LiveData.setValue() is available only on the UI thread
-    fun onCountChanged(itemPosition: Int, newSpinnerPosition: Int) {
-        Timber.d("onCountChanged called")
-        val content = _recyclerViewContent.value!!.toMutableList()
-        //Timber.i("Before: $content")
-        content[itemPosition] = ShiftsManager.ShiftItem(content[itemPosition].dayState, newSpinnerPosition)
-        //Timber.i("After: $content")
-        _recyclerViewContent.value = content
-    }
-
-    @MainThread // Invocation of LiveData.setValue() is available only on the UI thread
-    fun onDeleteItem(itemPosition: Int) {
-        Timber.d("onDeleteItem called")
-        val content = _recyclerViewContent.value!!.toMutableList()
-        content.removeAt(itemPosition)
-        if (content.size == 4) {
-            _addButtonVisibility.value = View.VISIBLE
-        }
-        _recyclerViewContent.value = content
-    }
-
-    @MainThread // Invocation of LiveData.setValue() is available only on the UI thread
-    fun addItemToRecyclerView() {
-        val content = _recyclerViewContent.value!!.toMutableList()
-        content.add(defaultItem)
-        if (content.size == 5) {
-            _addButtonVisibility.value = View.GONE
-        }
-        _recyclerViewContent.value = content
     }
 
     fun saveNewConfiguration(scheduleId: Int, config: List<ShiftsManager.ShiftItem>) {

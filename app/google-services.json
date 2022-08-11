@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126028292347",
+    "project_id": "work-shifts-schedule",
+    "storage_bucket": "work-shifts-schedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126028292347:android:d39a025e5771755463905e",
+        "android_client_info": {
+          "package_name": "com.nik.shift.calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126028292347-9c4jforts154s96m5p66s42ik35g5kj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEAx8XyH7mMAx8PsslPuXuQN62D-U7OCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126028292347-9c4jforts154s96m5p66s42ik35g5kj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
