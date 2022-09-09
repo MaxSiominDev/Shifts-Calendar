@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,18 +21,20 @@ import com.nik.shift.calendar.databinding.FragmentCustomizeBinding
 import com.nik.shift.calendar.databinding.ItemConfigBinding
 import com.nik.shift.calendar.model.ShiftsManager
 import com.nik.shift.calendar.model.ShiftsManager.Companion.defaultItem
-import com.nik.shift.calendar.ui.ViewBindingFragment
 import com.nik.shift.calendar.util.*
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
+class CustomizeFragment : Fragment(), HasActionBarOrNot {
 
     private val viewModel by viewModels<CustomizeViewModel>()
 
     private inline val scheduleId get() = requireArguments().getInt(ARG_ID)
     private inline val isNewSchedule get() = requireArguments().getBoolean(ARG_IS_NEW_SCHEDULE)
+
+    private var _binding: FragmentCustomizeBinding? = null
+    private val binding: FragmentCustomizeBinding get() = _binding!!
 
     private val recyclerViewAdapter by lazy {
         CustomizeAdapter()
@@ -66,9 +69,26 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
         findNavController().popBackStack()
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentCustomizeBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupActionBar()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.goBackFlow.collect {
@@ -145,7 +165,7 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
         binding.saveButton.isClickable = false
 
         val config = pConfig ?: recyclerViewAdapter.spinnerValues.map {
-            ShiftsManager.ShiftItem(DayState.fromInt(it.type), it.numberOfDays + 1)
+            ShiftsManager.ShiftItem(DayState.fromInt(it.type), it.numberOfDays)
         }
         Timber.i(config.joinToString())
         viewModel.saveNewConfiguration(scheduleId, config)
@@ -258,4 +278,6 @@ class CustomizeFragment : ViewBindingFragment<FragmentCustomizeBinding>() {
             val numberOfDays: Int,
         )
     }
+
+    override fun hasActionBar() = false
 }

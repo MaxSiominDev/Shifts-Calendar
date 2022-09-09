@@ -2,12 +2,14 @@ package com.nik.shift.calendar.ui.home
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.os.bundleOf
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -21,13 +23,32 @@ import com.nik.shift.calendar.R
 import com.nik.shift.calendar.databinding.FragmentHomeBinding
 import com.nik.shift.calendar.databinding.ItemScheduleBinding
 import com.nik.shift.calendar.ui.BaseDialogFragment
-import com.nik.shift.calendar.ui.ViewBindingFragment
 import com.nik.shift.calendar.util.*
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class HomeFragment : ViewBindingFragment<FragmentHomeBinding>() {
+class HomeFragment : Fragment(), HasActionBarOrNot {
+
+    private val menuProvider by lazy {
+        object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.overflow_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.action_settings -> {
+                        findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
+                    }
+                }
+                return true
+            }
+        }
+    }
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding: FragmentHomeBinding get() = _binding!!
 
     private val viewModel by viewModels<HomeViewModel>()
 
@@ -36,10 +57,42 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>() {
         HomeAdapter(recyclerViewData, viewModel::onRecyclerViewItemClicked)
     }
 
+    override fun hasActionBar() = true
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        val menuHost = activity as MenuHost
+        menuHost.addMenuProvider(menuProvider)
+    }
+
+    override fun onDetach() {
+        val menuHost = activity as MenuHost
+        menuHost.removeMenuProvider(menuProvider)
+
+        super.onDetach()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Timber.i("onViewCreatedCalled")
         super.onViewCreated(view, savedInstanceState)
+
+        setupActionBar()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.navState.collect { navState ->

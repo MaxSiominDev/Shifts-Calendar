@@ -70,5 +70,20 @@
     <string name="morning_night_dayoff2x">Day, night, 2 days off</string>
     <string name="morning2x_night2x_dayoff_2x">2 days, 2 nights, 2 days off</string>
     <string name="morning2x_night2x_dayoff_4x">2 days, 2 nights, 4 days off</string>
+    <string name="settings">Settings</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

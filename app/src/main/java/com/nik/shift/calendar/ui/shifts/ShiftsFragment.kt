@@ -4,12 +4,14 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import androidx.annotation.MainThread
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,10 +20,12 @@ import com.google.android.material.button.MaterialButton
 import com.nik.shift.calendar.R
 import com.nik.shift.calendar.databinding.FragmentShiftsBinding
 import com.nik.shift.calendar.ui.BaseDialogFragment
-import com.nik.shift.calendar.ui.ViewBindingFragment
 import com.nik.shift.calendar.util.*
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.*
 
@@ -29,7 +33,10 @@ import java.util.*
  * Created by MaxSiominDev on 5/24/2022
  */
 @AndroidEntryPoint
-class ShiftsFragment : ViewBindingFragment<FragmentShiftsBinding>() {
+class ShiftsFragment : Fragment(), HasActionBarOrNot {
+
+    private var _binding: FragmentShiftsBinding? = null
+    private val binding: FragmentShiftsBinding get() = _binding!!
 
     private val viewModel by viewModels<ShiftsViewModel>()
 
@@ -44,8 +51,21 @@ class ShiftsFragment : ViewBindingFragment<FragmentShiftsBinding>() {
         }
     }
 
+    override fun hasActionBar() = false
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentShiftsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupActionBar()
 
         binding.calendarView.setMinimumDate(minCalendarDate)
         binding.calendarView.setMaximumDate(maxCalendarDate)
@@ -132,6 +152,7 @@ class ShiftsFragment : ViewBindingFragment<FragmentShiftsBinding>() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
         Timber.d("onDestroyView called")
     }
 
