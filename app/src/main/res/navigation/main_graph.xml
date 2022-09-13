@@ -7,15 +7,15 @@
         android:id="@+id/shiftsFragment"
         android:name="com.nik.shift.calendar.ui.shifts.ShiftsFragment"
         android:label="ShiftsFragment" >
-        <action
-            android:id="@+id/action_shiftsFragment_to_customizeFragment"
-            app:destination="@id/customizeFragment" />
         <argument
             android:name="id"
             app:argType="integer" />
         <argument
             android:name="scheduleOpenedFirstTime"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_shiftsFragment_to_customizeFragment"
+            app:destination="@id/customizeFragment" />
     </fragment>
     <fragment
         android:id="@+id/customizeFragment"
@@ -35,12 +35,6 @@
         <action
             android:id="@+id/action_homeFragment_to_shiftsFragment"
             app:destination="@id/shiftsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.nik.shift.calendar.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+
 </navigation>

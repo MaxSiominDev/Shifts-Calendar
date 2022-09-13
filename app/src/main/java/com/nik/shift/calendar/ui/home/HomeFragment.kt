@@ -30,7 +30,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HasActionBarOrNot {
 
-    private val menuProvider by lazy {
+    /*private val menuProvider by lazy {
         object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.overflow_menu, menu)
@@ -45,7 +45,7 @@ class HomeFragment : Fragment(), HasActionBarOrNot {
                 return true
             }
         }
-    }
+    }*/
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
@@ -59,19 +59,19 @@ class HomeFragment : Fragment(), HasActionBarOrNot {
 
     override fun hasActionBar() = true
 
-    override fun onAttach(context: Context) {
+    /*override fun onAttach(context: Context) {
         super.onAttach(context)
 
         val menuHost = activity as MenuHost
         menuHost.addMenuProvider(menuProvider)
-    }
+    }*/
 
-    override fun onDetach() {
+    /*override fun onDetach() {
         val menuHost = activity as MenuHost
         menuHost.removeMenuProvider(menuProvider)
 
         super.onDetach()
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
