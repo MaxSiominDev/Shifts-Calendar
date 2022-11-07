@@ -1,3 +1,6 @@
+## I can't develop this app anymore so I archive this repo
+
+
 # Work shifts schedule app &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 Manage your work shifts. Easy to use application, install it, select your shift type and get info about your shifts for many years ahead! 
 Feautures:
